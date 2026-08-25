@@ -511,6 +511,78 @@ section {
   color:#a8bbc2
 }
 
+/* Visual field-work showcase */
+.field-work {
+  padding-top:20px;
+  background:var(--paper)
+}
+
+.field-work-heading {
+  margin-bottom:36px
+}
+
+.photo-grid {
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:20px
+}
+
+.photo-card {
+  position:relative;
+  min-height:470px;
+  overflow:hidden;
+  background:var(--navy)
+}
+
+.photo-card img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s ease
+}
+
+.photo-card:hover img {
+  transform:scale(1.025)
+}
+
+.photo-card::after {
+  content:"";
+  position:absolute;
+  inset:45% 0 0;
+  background:linear-gradient(transparent,rgba(3,17,28,.94));
+  pointer-events:none
+}
+
+.photo-card figcaption {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  padding:28px;
+  color:#fff
+}
+
+.photo-card figcaption>span {
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800
+}
+
+.photo-card figcaption strong {
+  font-size:18px
+}
+
+.photo-card figcaption p {
+  margin-top:5px;
+  color:#b7c8ce;
+  font-size:12px;
+  line-height:1.5
+}
+
 .equipment {
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1147,6 +1219,14 @@ section {
   gap:20px
 }
 
+.photo-grid {
+  grid-template-columns:1fr
+}
+
+.photo-card {
+  min-height:390px
+}
+
 .equipment {
   grid-template-columns:1fr
 }
@@ -1260,6 +1340,14 @@ section {
 
 .service-card>i {
   margin:28px 0
+}
+
+.photo-card {
+  min-height:320px
+}
+
+.photo-card figcaption {
+  padding:22px
 }
 
 .equipment-image {
