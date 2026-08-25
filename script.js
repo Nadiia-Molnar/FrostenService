@@ -1,8 +1,9 @@
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll("main section[id]");
 const navLinks = document.querySelectorAll(".nav-link");
 const header = document.querySelector(".header");
 const menuToggle = document.querySelector(".menu-toggle");
 const menuBackdrop = document.querySelector(".menu-backdrop");
+const backToTop = document.querySelector(".back-to-top");
 
 function closeMenu() {
     document.body.classList.remove("menu-open");
@@ -34,7 +35,14 @@ function setActiveLink() {
     });
 }
 
-window.addEventListener("scroll", setActiveLink, { passive: true });
+function updateBackToTop() {
+    backToTop?.classList.toggle("visible", window.scrollY > 450);
+}
+
+window.addEventListener("scroll", () => {
+    setActiveLink();
+    updateBackToTop();
+}, { passive: true });
 window.addEventListener("resize", () => {
     setActiveLink();
 
@@ -42,11 +50,17 @@ window.addEventListener("resize", () => {
         closeMenu();
     }
 });
-window.addEventListener("load", setActiveLink);
+window.addEventListener("load", () => {
+    setActiveLink();
+    updateBackToTop();
+});
 
 menuToggle?.addEventListener("click", toggleMenu);
 menuBackdrop?.addEventListener("click", closeMenu);
 navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+backToTop?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
